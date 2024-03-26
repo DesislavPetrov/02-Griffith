@@ -142,12 +142,12 @@ $.getJSON(
 
       bounds.extend([longitude, latitude]);
 
-     var popupContent =
+      var popupContent =
         "<div class='marker-popup-icon'><img src='" +
         iconUrl +
         "'></div><div class='title'>" +
         name +
-        "</div><div class='marker-popup-custom-close-button'><img src='https://uploads-ssl.webflow.com/650167c877dd38466d76ae92/66029d38448e131d0ed25e92_close-button.svg'></div>";
+        "</div><div onclick='closePopup()' class='marker-popup-custom-close-button'><img  id='#close-button-popup' src='https://uploads-ssl.webflow.com/650167c877dd38466d76ae92/66029d38448e131d0ed25e92_close-button.svg'></div>";
 
       if (address) {
         popupContent +=
@@ -246,3 +246,7 @@ $.getJSON(
     map.fitBounds(bounds, { padding: 80 });
   }
 );
+
+function closePopup(){
+  $(".mapboxgl-popup").remove();
+}
